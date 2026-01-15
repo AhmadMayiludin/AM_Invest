@@ -1,7 +1,7 @@
 import { ValuasiCalculator } from "@/components/calculators";
 
 export const metadata = {
-    title: "Kalkulator Valuasi - InvestGenius",
+    title: "Kalkulator Valuasi - AM Invest",
     description: "Hitung harga wajar saham dengan Graham Number dan PBV Band",
 };
 

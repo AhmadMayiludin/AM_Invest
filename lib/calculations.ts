@@ -1,5 +1,5 @@
 /**
- * InvestGenius - Calculator Functions
+ * AM Invest - Calculator Functions
  * All mathematical calculations for investment tools
  */
 
@@ -90,21 +90,21 @@ export function calculateAverageDown(
   const currentShares = currentLots * SHARES_PER_LOT;
   const newShares = newLots * SHARES_PER_LOT;
   const totalShares = currentShares + newShares;
-  
+
   const currentModal = currentAverage * currentShares;
   const newModal = newPrice * newShares;
   const totalModal = currentModal + newModal;
-  
+
   const newAverage = totalShares > 0 ? totalModal / totalShares : 0;
   const modalChange = newModal;
   const modalChangePercent = currentModal > 0 ? (newModal / currentModal) * 100 : 0;
-  
+
   // Calculate potential profit/loss if target price is provided
   const effectiveTarget = targetPrice || newPrice;
   const potentialValue = totalShares * effectiveTarget;
   const potentialProfitLoss = potentialValue - totalModal;
   const potentialProfitLossPercent = totalModal > 0 ? (potentialProfitLoss / totalModal) * 100 : 0;
-  
+
   return {
     newAverage,
     totalShares,
@@ -152,31 +152,31 @@ export function calculateRightsIssue(
   exercisePrice: number
 ): RightsIssueResult {
   const oldShares = oldLots * SHARES_PER_LOT;
-  
+
   // Calculate rights entitlement
   const rightsShares = Math.floor((oldShares / ratioOld) * ratioNew);
   const rightsLots = rightsShares / SHARES_PER_LOT;
-  
+
   // Total shares after rights
   const finalShares = oldShares + rightsShares;
   const finalLots = finalShares / SHARES_PER_LOT;
-  
+
   // Calculate required funds
   const danaWajib = rightsShares * exercisePrice;
-  
+
   // Calculate new average
   const oldModal = oldShares * oldAverage;
   const totalModal = oldModal + danaWajib;
   const newAverage = finalShares > 0 ? totalModal / finalShares : 0;
-  
+
   // Calculate dilution percentage
   const dilutionPercent = oldShares > 0 ? (rightsShares / oldShares) * 100 : 0;
-  
+
   // Theoretical Ex-Rights Price (TERP)
-  const terp = finalShares > 0 
-    ? ((oldShares * oldAverage) + (rightsShares * exercisePrice)) / finalShares 
+  const terp = finalShares > 0
+    ? ((oldShares * oldAverage) + (rightsShares * exercisePrice)) / finalShares
     : 0;
-  
+
   return {
     rightsShares,
     rightsLots,
@@ -221,11 +221,11 @@ export function calculateDividend(
   const grossDividend = totalShares * dps;
   const taxAmount = grossDividend * DIVIDEND_TAX_RATE;
   const netDividend = grossDividend - taxAmount;
-  
+
   // Dividend Yield = (DPS / Current Price) * 100
   const dividendYield = currentPrice > 0 ? (dps / currentPrice) * 100 : 0;
   const annualizedYield = dividendYield * frequency;
-  
+
   return {
     totalShares,
     grossDividend,
@@ -269,32 +269,32 @@ export function calculateRiskReward(
 ): RiskRewardResult {
   // Calculate risk per share
   const riskPerShare = Math.abs(buyPrice - stopLoss);
-  
+
   // Calculate maximum risk amount
   const maxRiskAmount = (totalCapital * riskPercent) / 100;
-  
+
   // Calculate maximum shares that can be bought
   const maxShares = riskPerShare > 0 ? Math.floor(maxRiskAmount / riskPerShare) : 0;
-  
+
   // Round down to nearest lot
   const maxLots = Math.floor(maxShares / SHARES_PER_LOT);
   const actualMaxShares = maxLots * SHARES_PER_LOT;
-  
+
   // Calculate actual investment and loss
   const totalInvestment = actualMaxShares * buyPrice;
   const maxLossAmount = actualMaxShares * riskPerShare;
-  
+
   // Calculate reward if target is provided
   let rewardPerShare: number | undefined;
   let potentialProfit: number | undefined;
   let riskRewardRatio: number | undefined;
-  
+
   if (targetProfit && targetProfit > buyPrice) {
     rewardPerShare = targetProfit - buyPrice;
     potentialProfit = actualMaxShares * rewardPerShare;
     riskRewardRatio = riskPerShare > 0 ? rewardPerShare / riskPerShare : 0;
   }
-  
+
   return {
     riskPerShare,
     maxShares: actualMaxShares,
@@ -332,12 +332,12 @@ export function calculateGrahamNumber(
   const epsValid = eps > 0;
   const bvpsValid = bvps > 0;
   const isValid = epsValid && bvpsValid;
-  
+
   let grahamNumber = 0;
   if (isValid) {
     grahamNumber = Math.sqrt(GRAHAM_MULTIPLIER * eps * bvps);
   }
-  
+
   return {
     grahamNumber,
     isValid,
@@ -369,18 +369,18 @@ export function calculatePBVBand(
   const bands = pbvLevels.map((pbvLevel) => {
     const fairValue = bvps * pbvLevel;
     let discount: number | undefined;
-    
+
     if (currentPrice && fairValue > 0) {
       discount = ((fairValue - currentPrice) / fairValue) * 100;
     }
-    
+
     return {
       pbvLevel,
       fairValue,
       discount,
     };
   });
-  
+
   return {
     bvps,
     bands,
@@ -418,16 +418,16 @@ export function calculateCompoundInterest(
 ): CompoundInterestResult {
   const monthlyRate = annualRate / 100 / 12;
   const totalMonths = years * 12;
-  
+
   let balance = principal;
   let totalContributions = principal;
   const yearlyBreakdown: CompoundInterestResult['yearlyBreakdown'] = [];
-  
+
   for (let month = 1; month <= totalMonths; month++) {
     const interest = balance * monthlyRate;
     balance += interest + monthlyContribution;
     totalContributions += monthlyContribution;
-    
+
     if (month % 12 === 0) {
       yearlyBreakdown.push({
         year: month / 12,
@@ -437,7 +437,7 @@ export function calculateCompoundInterest(
       });
     }
   }
-  
+
   return {
     futureValue: balance,
     totalContributions,

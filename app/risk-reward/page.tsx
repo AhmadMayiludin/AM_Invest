@@ -1,7 +1,7 @@
 import { RiskRewardCalculator } from "@/components/calculators";
 
 export const metadata = {
-    title: "Kalkulator Risk/Reward - InvestGenius",
+    title: "Kalkulator Risk/Reward - AM Invest",
     description: "Hitung position sizing dan manajemen risiko per trade saham",
 };
 

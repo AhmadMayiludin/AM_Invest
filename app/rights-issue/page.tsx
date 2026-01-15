@@ -1,7 +1,7 @@
 import { RightsIssueCalculator } from "@/components/calculators";
 
 export const metadata = {
-    title: "Kalkulator Rights Issue - InvestGenius",
+    title: "Kalkulator Rights Issue - AM Invest",
     description: "Hitung hak rights, dana wajib setor, dan efek dilusi dari rights issue saham",
 };
 

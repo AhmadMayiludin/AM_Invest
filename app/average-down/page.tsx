@@ -1,7 +1,7 @@
 import { AverageDownCalculator } from "@/components/calculators";
 
 export const metadata = {
-    title: "Kalkulator Average Down/Up - InvestGenius",
+    title: "Kalkulator Average Down/Up - AM Invest",
     description: "Hitung harga rata-rata baru saat melakukan average down atau average up saham",
 };
 

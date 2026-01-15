@@ -1,7 +1,7 @@
 import { DividenCalculator } from "@/components/calculators";
 
 export const metadata = {
-    title: "Kalkulator Dividen - InvestGenius",
+    title: "Kalkulator Dividen - AM Invest",
     description: "Hitung total dividen bersih setelah pajak 10% dan dividend yield",
 };
 

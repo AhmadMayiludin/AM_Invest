@@ -83,7 +83,7 @@ export default function Home() {
           </div>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Selamat datang di{" "}
-            <span className="gradient-text">InvestGenius</span>
+            <span className="gradient-text">AM Invest</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
             All-in-One Investor Tools untuk Gen Z Indonesia 🇮🇩
