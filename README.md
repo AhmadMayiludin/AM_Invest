@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# InvestGenius - All-in-One Investor Tools
 
-## Getting Started
+Website interaktif untuk investor ritel di Indonesia, khususnya Gen Z, dengan kalkulator esensial, desain modern, dan performa tinggi.
 
-First, run the development server:
+![InvestGenius](https://img.shields.io/badge/InvestGenius-v1.0-blue)
+![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38bdf8)
+
+## 🚀 Fitur
+
+- **Kalkulator Average Down/Up** - Hitung harga rata-rata baru saat menambah posisi
+- **Kalkulator Rights Issue** - Kalkulasi hak rights, dana wajib setor, dan efek dilusi
+- **Kalkulator Dividen** - Hitung dividen bersih setelah pajak 10%
+- **Kalkulator Risk/Reward** - Position sizing dan manajemen risiko per trade
+- **Kalkulator Valuasi** - Graham Number dan PBV Band untuk valuasi saham
+
+## 💎 Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Shadcn/UI
+- **Deployment**: Vercel-ready
+
+## 🎨 Design
+
+- Dark mode default dengan aksen neon
+- Glassmorphism effects
+- Responsive design (Desktop, Tablet, Mobile)
+- Smooth animations dan transitions
+
+## 📦 Instalasi
 
 ```bash
+# Clone repository
+git clone <repo-url>
+cd project_invest
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka [http://localhost:3000](http://localhost:3000) di browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run start    # Start production server
+npm run lint     # Run ESLint
+```
 
-## Learn More
+## 📁 Struktur Proyek
 
-To learn more about Next.js, take a look at the following resources:
+```
+project_invest/
+├── app/
+│   ├── layout.tsx           # Root layout
+│   ├── page.tsx             # Dashboard
+│   ├── average-down/        # Kalkulator Average Down
+│   ├── rights-issue/        # Kalkulator Rights Issue
+│   ├── dividen/             # Kalkulator Dividen
+│   ├── risk-reward/         # Kalkulator Risk/Reward
+│   └── valuasi/             # Kalkulator Valuasi
+├── components/
+│   ├── layout/              # Layout components
+│   ├── calculators/         # Calculator components
+│   └── ui/                  # Shadcn/UI components
+├── lib/
+│   ├── utils.ts             # Utility functions
+│   └── calculations.ts      # Calculator logic
+└── public/                  # Static assets
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧮 Rumus Kalkulasi
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Average Down/Up
+```
+Rata-rata Baru = (Modal Lama + Modal Baru) / Total Lembar Saham
+```
 
-## Deploy on Vercel
+### Rights Issue
+```
+Hak Rights = (Lot Lama / Rasio Lama) × Rasio Baru
+Dana Wajib = Hak Rights × Exercise Price
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Dividen
+```
+Dividen Bersih = (Lot × 100 × DPS) × 90%
+Dividend Yield = (DPS / Harga Saham) × 100%
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Graham Number
+```
+Graham Number = √(22.5 × EPS × BVPS)
+```
+
+### PBV Band
+```
+Harga Wajar = BVPS × PBV Level
+```
+
+## ☕ Support
+
+Jika proyek ini bermanfaat, dukung pengembangan dengan traktir kopi! ☕
+
+## 📄 License
+
+MIT License - Bebas digunakan untuk keperluan pribadi dan komersial.
+
+---
+
+Made with ❤️ for Indonesian Gen Z Investors 🇮🇩
